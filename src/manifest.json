@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Add Arguments to Google Searches",
-  "version": "1.0",
+  "version": "1.01",
   "description": "Append custom arguments to your Google searches",
   "permissions": [
     "webRequest",
