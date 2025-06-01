@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "Google Search Arguments",
+  "version": "1.0",
+  "description": "Append custom arguments to your Google searches",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "*://*.google.com/search*",
+    "storage"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_icon": {
+      "48": "icon-48.png",
+      "96": "icon-96.png"
+    },
+    "default_title": "Google Search Arguments",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "48": "icon-48.png",
+    "96": "icon-96.png"
+  }
+} 
