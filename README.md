@@ -11,6 +11,6 @@ For example, you could add:
 3. __```reddit```__ to automatically favor Reddit hits
 4. __```"potato"```__ to only accept results which mention the humble potato
 
-This add-on does not know who you are, does not care who you are, and does not collect any of your data. You are encouraged to review and fork the source code as you desire.
+This add-on does not know who you are, does not care who you are, and does not collect any of your data.
 
-This software is in the public domain.
+This software is in the public domain. You are encouraged to review and fork the source code as you desire.
