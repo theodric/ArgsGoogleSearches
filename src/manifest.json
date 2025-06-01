@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Google Search Arguments",
+  "name": "Add Arguments to Google Searches",
   "version": "1.0",
   "description": "Append custom arguments to your Google searches",
   "permissions": [
