@@ -15,30 +15,52 @@ document.addEventListener('DOMContentLoaded', function() {
   function displayArguments(args) {
     const explanationBox = document.getElementById('explanationBox');
     
+    // Clear existing content
+    while (argumentsList.firstChild) {
+      argumentsList.removeChild(argumentsList.firstChild);
+    }
+    
     if (args.length === 0) {
-      argumentsList.innerHTML = '<div class="empty-state">No arguments added yet</div>';
+      const emptyState = document.createElement('div');
+      emptyState.className = 'empty-state';
+      emptyState.textContent = 'No arguments added yet';
+      argumentsList.appendChild(emptyState);
       explanationBox.classList.add('visible');
     } else {
-      argumentsList.innerHTML = args.map((arg, index) => `
-        <div class="argument-item" data-index="${index}">
-          <span class="argument-text">${arg.text}</span>
-          <label class="switch">
-            <input type="checkbox" ${arg.enabled ? 'checked' : ''}>
-            <span class="slider"></span>
-          </label>
-          <button class="delete-button" title="Remove argument">X</button>
-        </div>
-      `).join('');
+      args.forEach((arg, index) => {
+        const argumentItem = document.createElement('div');
+        argumentItem.className = 'argument-item';
+        argumentItem.dataset.index = index;
+
+        const argumentText = document.createElement('span');
+        argumentText.className = 'argument-text';
+        argumentText.textContent = arg.text;
+
+        const switchLabel = document.createElement('label');
+        switchLabel.className = 'switch';
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = arg.enabled;
+        checkbox.addEventListener('change', () => toggleArgument(index, checkbox.checked));
+
+        const slider = document.createElement('span');
+        slider.className = 'slider';
+
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'delete-button';
+        deleteButton.title = 'Remove argument';
+        deleteButton.textContent = 'X';
+        deleteButton.addEventListener('click', () => deleteArgument(index));
+
+        switchLabel.appendChild(checkbox);
+        switchLabel.appendChild(slider);
+        argumentItem.appendChild(argumentText);
+        argumentItem.appendChild(switchLabel);
+        argumentItem.appendChild(deleteButton);
+        argumentsList.appendChild(argumentItem);
+      });
       explanationBox.classList.remove('visible');
-
-      // Add event listeners for toggles and delete buttons
-      argumentsList.querySelectorAll('.switch input').forEach((toggle, index) => {
-        toggle.addEventListener('change', () => toggleArgument(index, toggle.checked));
-      });
-
-      argumentsList.querySelectorAll('.delete-button').forEach((button, index) => {
-        button.addEventListener('click', () => deleteArgument(index));
-      });
     }
   }
 
