@@ -11,7 +11,7 @@ For example, you could add:
 3. __```reddit```__ to automatically favor Reddit hits
 4. __```"potato"```__ to only accept results which mention the humble potato
 
-v1.2 adds the ability to toggle adding the `&udm=14` parameter to the search URL arguments in order to further nerf the creeping AI. (Thanks to the person on Mastodon who made me aware of this, who I will happily credit if they wish!) [Read more about udm=14 here.](https://tedium.co/2024/05/17/google-web-search-make-default/)
+v1.2 adds the ability to toggle adding the `&udm=14` parameter to the search URL arguments in order to further nerf the creeping AI. (Thanks to the person on Mastodon who made me aware of this, and who I will happily credit if they wish!) [Read more about udm=14 here.](https://tedium.co/2024/05/17/google-web-search-make-default/)
 
 This add-on does not know who you are, does not care who you are, and does not collect any of your data.
 
