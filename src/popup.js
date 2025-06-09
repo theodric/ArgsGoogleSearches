@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const argumentsList = document.getElementById('argumentsList');
   const newArgumentInput = document.getElementById('newArgument');
   const addButton = document.getElementById('addButton');
+  const udmToggle = document.getElementById('udmToggle');
 
   // Load and display arguments
   function loadArguments() {
@@ -9,6 +10,18 @@ document.addEventListener('DOMContentLoaded', function() {
       const args = result.arguments || [];
       displayArguments(args);
     });
+  }
+
+  // Load UDM toggle state
+  function loadUdmState() {
+    browser.storage.local.get('udmEnabled').then((result) => {
+      udmToggle.checked = result.udmEnabled || false;
+    });
+  }
+
+  // Toggle UDM parameter
+  function toggleUdm(enabled) {
+    browser.storage.local.set({ udmEnabled: enabled });
   }
 
   // Display arguments in the list
@@ -112,8 +125,12 @@ document.addEventListener('DOMContentLoaded', function() {
   newArgumentInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') addArgument();
   });
+  udmToggle.addEventListener('change', (e) => {
+    toggleUdm(e.target.checked);
+  });
 
   // Initial load
   loadArguments();
+  loadUdmState();
 });
 
